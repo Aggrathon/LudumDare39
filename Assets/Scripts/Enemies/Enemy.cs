@@ -33,7 +33,6 @@ public class Enemy : MonoBehaviour {
 	private void OnDisable()
 	{
 		activeEnemies.Remove(node);
-		GameManager.AddMoney(killReward);
 	}
 
 	private void Update()
@@ -41,6 +40,7 @@ public class Enemy : MonoBehaviour {
 		if ((transform.position-goal.position).sqrMagnitude < 1)
 		{
 			GameManager.DoStructuralDamage(penalty);
+			GameManager.AddMoney(killReward);
 			Destroy(gameObject);
 		}
 	}
@@ -55,6 +55,7 @@ public class Enemy : MonoBehaviour {
 		health -= amount;
 		if (health < 0)
 		{
+			GameManager.AddMoney(killReward);
 			Destroy(gameObject);
 			return true;
 		}

@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour {
 
 	private void OnDestroy()
 	{
-		instance = null;
 		Time.timeScale = 1;
 	}
 

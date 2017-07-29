@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  killReward: 10
+  penalty: 1
 --- !u!135 &135824520647687572
 SphereCollider:
   m_ObjectHideFlags: 1
