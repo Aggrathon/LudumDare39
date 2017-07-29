@@ -36,17 +36,22 @@ public class LaserTower : Tower
 		lr.SetPosition(0, transform.position);
 		lr.enabled = true;
 		float elapsed = 0;
+		float prevRange = range*0.8f;
 		do
 		{
 			Vector3 dir = Vector3.Lerp(dir1, dir2, elapsed / laserTime).normalized;
 			int numHits = Physics.RaycastNonAlloc(transform.position, dir, hits, range);
+			prevRange *= 0.9f;
 			for (int i = 0; i < numHits; i++)
 			{
 				Enemy enemy = hits[i].collider.GetComponent<Enemy>();
 				if (enemy.Damage(damage * Time.deltaTime))
 					SetKilled(enemy);
+				float dist = hits[i].distance + 0.4f;
+				if (dist > prevRange)
+					prevRange = dist;
 			}
-			lr.SetPosition(1, transform.position + dir * range);
+			lr.SetPosition(1, transform.position + dir * prevRange);
 			transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
 			yield return null;
 			elapsed += Time.deltaTime * powerSource.efficiency;

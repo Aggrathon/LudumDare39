@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour {
 			int ns = (int)(time - Time.time);
 			if (ns != sec)
 			{
-				text.text = "<color=grey>" + ns + "s</color>\n\n";
+				text.text = "<color=grey>" + ns + "s</color>";
 				sec = ns;
 			}
 			yield return null;

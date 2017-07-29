@@ -19,7 +19,7 @@ public class CurvedWire : MonoBehaviour {
 		for (int i = 1; i < segments; i++)
 		{
 			float influence = ((float)(i - 1) / (float)(segments - 2));
-			pos += (target.position - pos) * influence;
+			pos += (target.position - pos) * (influence*influence+influence)*0.5f;
 			influence = (1-influence)*(1-influence);
 			pos += source.forward * (directionStrength * influence);
 			lr.SetPosition(i, pos);
