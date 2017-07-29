@@ -9,8 +9,11 @@ public class Enemy : MonoBehaviour {
 	static Transform goal;
 	static public LinkedList<Enemy> activeEnemies;
 
+	public float maxHealth = 100;
+
 	NavMeshAgent nav;
 	LinkedListNode<Enemy> node;
+	float health;
 	
 	void Awake () {
 		nav = GetComponent<NavMeshAgent>();
@@ -24,6 +27,7 @@ public class Enemy : MonoBehaviour {
 	{
 		nav.SetDestination(goal.position);
 		node = activeEnemies.AddLast(this);
+		health = maxHealth;
 	}
 
 	private void OnDisable()
@@ -34,5 +38,16 @@ public class Enemy : MonoBehaviour {
 	public Vector3 GetFuturePosition(float time)
 	{
 		return transform.position + nav.velocity * time;
+	}
+
+	public bool Damage(float amount)
+	{
+		health -= amount;
+		if (health < 0)
+		{
+			gameObject.SetActive(false);
+			return true;
+		}
+		return false;
 	}
 }

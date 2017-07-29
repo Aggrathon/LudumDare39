@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d05356dcd42054aaa960d66043a003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 4
+  range: 3
   cooldown: 0.6
   damage: 10
   laserTime: 0.4

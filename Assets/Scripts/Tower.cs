@@ -50,4 +50,10 @@ public abstract class Tower : MonoBehaviour {
 		}
 		return target;
 	}
+
+	public void SetKilled(Enemy enemy)
+	{
+		if (enemy == target)
+			target = null;
+	}
 }
