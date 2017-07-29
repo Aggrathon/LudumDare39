@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4703614852617840}
   - component: {fileID: 120758452324920480}
+  - component: {fileID: 114170715833152940}
   m_Layer: 0
   m_Name: Wire
   m_TagString: Untagged
@@ -33,13 +34,25 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1573820817622950}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114170715833152940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573820817622950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feaf056c1bc37444e8b79ffb6da2ed2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: []
 --- !u!120 &120758452324920480
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -73,12 +86,8 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -1.4, y: 0.01, z: 1.6}
-  - {x: -1.4, y: 0.01, z: -4}
-  - {x: -4.7, y: 0.01, z: -4}
-  - {x: -4.7, y: 0.01, z: 4.1}
-  - {x: 1.8, y: 0.01, z: 4.1}
-  - {x: 1.8, y: 0.01, z: -1.6}
+  - {x: -1.4, y: 0, z: 1.6}
+  - {x: -1.4, y: 0, z: -4}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.1

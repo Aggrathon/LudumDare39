@@ -10,7 +10,7 @@ public class PowerSwitch : APowerSource {
 	float powerDrain = 0;
 
 	public Animator anim;
-	public LineRenderer[] wires;
+	public Renderer[] wires;
 	public Material wireOnMaterial;
 	public Material wireOffMaterial;
 	public APowerSource powerSource;
