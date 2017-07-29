@@ -12,13 +12,12 @@ public class LaserTower : Tower
 	[Range(0f, 1f)]public float arcRange = 0.8f;
 
 	LineRenderer lr;
+	RaycastHit[] hits = new RaycastHit[10];
 
 	private void Awake()
 	{
 		lr = GetComponent<LineRenderer>();
 		lr.enabled = false;
-		if (cooldown < laserTime)
-			cooldown = laserTime;
 		autoRotate = false;
 	}
 
@@ -37,26 +36,20 @@ public class LaserTower : Tower
 		lr.SetPosition(0, transform.position);
 		lr.enabled = true;
 		float elapsed = 0;
-		float prevRange = range * 0.6f;
 		do
 		{
 			Vector3 dir = Vector3.Lerp(dir1, dir2, elapsed / laserTime).normalized;
-			RaycastHit hit;
-			if (Physics.Raycast(transform.position, dir, out hit, range))
+			int numHits = Physics.RaycastNonAlloc(transform.position, dir, hits, range);
+			for (int i = 0; i < numHits; i++)
 			{
-				lr.SetPosition(1, hit.point);
-				Enemy enemy = hit.collider.GetComponent<Enemy>();
+				Enemy enemy = hits[i].collider.GetComponent<Enemy>();
 				if (enemy.Damage(damage * Time.deltaTime))
 					SetKilled(enemy);
-				prevRange = hit.distance+0.4f;
 			}
-			else
-			{
-				lr.SetPosition(1, transform.position + dir * prevRange);
-			}
+			lr.SetPosition(1, transform.position + dir * range);
 			transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
 			yield return null;
-			elapsed = Time.time - time;
+			elapsed += Time.deltaTime * powerSource.efficiency;
 		} while (elapsed < laserTime);
 		lr.enabled = false;
 	}

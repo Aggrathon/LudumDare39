@@ -5,24 +5,30 @@ public abstract class Tower : MonoBehaviour {
 	public float range = 4;
 	public float cooldown = 0.1f;
 	public int cost = 100;
+	public float powerDrain = 10;
 
 	[System.NonSerialized] public APowerSource powerSource;
 
 	Enemy target;
-	float timer;
+	protected float firingTimer;
 	protected bool autoRotate = true;
+
+	virtual protected void Start()
+	{
+		powerSource.AddDrain(powerDrain);
+	}
 	
 	void Update () {
-		if(timer < 0)
+		if(firingTimer < 0)
 		{
 			if (GetTarget() != null)
 			{
 				Shoot(target);
-				timer += cooldown;
+				firingTimer += cooldown;
 			}
 		}
 		else
-			timer -= Time.deltaTime;
+			firingTimer -= Time.deltaTime * powerSource.efficiency;
 		if (autoRotate && target != null)
 		{
 			Vector3 lt = target.transform.position;

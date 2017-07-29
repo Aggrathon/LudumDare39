@@ -8,7 +8,7 @@ public class BuildButton : MonoBehaviour {
 	public UIManager.BuildType buildType;
 	public APowerSource powerSource;
 
-	private void Start()
+	private void Awake()
 	{
 		powerSource.onPowerStateChanged += PowerState;
 	}

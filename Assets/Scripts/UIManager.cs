@@ -55,10 +55,15 @@ public class UIManager : MonoBehaviour {
 			b.interactable = GameManager.CheckMoney(t.cost);
 			b.onClick.RemoveAllListeners();
 			b.onClick.AddListener(() => {
-				GameObject go = Instantiate(prefab, btn.transform.position, btn.transform.rotation);
-				go.GetComponent<Tower>().powerSource = btn.powerSource;
-				Destroy(btn.gameObject);
-				buildPanel.gameObject.SetActive(false);
+				if (GameManager.TrySpendMoney(t.cost))
+				{
+					GameObject go = Instantiate(prefab, btn.transform.position, btn.transform.rotation);
+					go.GetComponent<Tower>().powerSource = btn.powerSource;
+					Destroy(btn.gameObject);
+					buildPanel.gameObject.SetActive(false);
+				}
+				else
+					b.interactable = false;
 			});
 			tr.GetChild(0).GetComponent<Text>().text = t.name;
 			tr.GetChild(1).GetComponent<Text>().text = t.cost.ToString();
