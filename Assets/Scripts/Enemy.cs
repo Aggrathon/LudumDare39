@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour {
 
 	static Transform goal;
-	static public LinkedList<Enemy> activeEnemies;
+	static public LinkedList<Enemy> activeEnemies = new LinkedList<Enemy>();
 
 	public float maxHealth = 100;
 
@@ -19,8 +19,6 @@ public class Enemy : MonoBehaviour {
 		nav = GetComponent<NavMeshAgent>();
 		if (goal == null)
 			goal = GameObject.FindGameObjectWithTag("Finish").transform;
-		if (activeEnemies == null)
-			activeEnemies = new LinkedList<Enemy>();
 	}
 
 	void OnEnable()
@@ -33,6 +31,15 @@ public class Enemy : MonoBehaviour {
 	private void OnDisable()
 	{
 		activeEnemies.Remove(node);
+	}
+
+	private void Update()
+	{
+		if ((transform.position-goal.position).sqrMagnitude < 1)
+		{
+			//TODO Do structural damage
+			gameObject.SetActive(false);
+		}
 	}
 
 	public Vector3 GetFuturePosition(float time)

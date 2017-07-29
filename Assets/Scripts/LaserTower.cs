@@ -9,6 +9,7 @@ public class LaserTower : Tower
 {
 	public float damage = 10;
 	public float laserTime = 0.2f;
+	[Range(0f, 1f)]public float arcRange = 0.8f;
 
 	LineRenderer lr;
 
@@ -23,8 +24,8 @@ public class LaserTower : Tower
 
 	protected override void Shoot(Enemy target)
 	{
-		Vector3 dir1 = target.GetFuturePosition(-laserTime*0.5f) - transform.position;
-		Vector3 dir2 = target.GetFuturePosition(laserTime*1.5f) - transform.position;
+		Vector3 dir1 = target.GetFuturePosition(-laserTime*arcRange) - transform.position;
+		Vector3 dir2 = target.GetFuturePosition(laserTime*(1+arcRange)) - transform.position;
 		dir1.y = 0;
 		dir2.y = 0;
 		StartCoroutine(Shooting(dir1.normalized, dir2.normalized));
@@ -36,6 +37,7 @@ public class LaserTower : Tower
 		lr.SetPosition(0, transform.position);
 		lr.enabled = true;
 		float elapsed = 0;
+		float prevRange = range * 0.6f;
 		do
 		{
 			Vector3 dir = Vector3.Lerp(dir1, dir2, elapsed / laserTime).normalized;
@@ -46,10 +48,11 @@ public class LaserTower : Tower
 				Enemy enemy = hit.collider.GetComponent<Enemy>();
 				if (enemy.Damage(damage * Time.deltaTime))
 					SetKilled(enemy);
+				prevRange = hit.distance+0.4f;
 			}
 			else
 			{
-				lr.SetPosition(1, transform.position + dir * range);
+				lr.SetPosition(1, transform.position + dir * prevRange);
 			}
 			transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
 			yield return null;
