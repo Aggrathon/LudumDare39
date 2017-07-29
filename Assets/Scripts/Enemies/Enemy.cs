@@ -40,8 +40,7 @@ public class Enemy : MonoBehaviour {
 		if ((transform.position-goal.position).sqrMagnitude < 1)
 		{
 			GameManager.DoStructuralDamage(penalty);
-			GameManager.AddMoney(killReward);
-			Destroy(gameObject);
+			Die();
 		}
 	}
 
@@ -55,10 +54,15 @@ public class Enemy : MonoBehaviour {
 		health -= amount;
 		if (health < 0)
 		{
-			GameManager.AddMoney(killReward);
-			Destroy(gameObject);
+			Die();
 			return true;
 		}
 		return false;
+	}
+
+	void Die()
+	{
+		GameManager.AddMoney(killReward);
+		Destroy(gameObject);
 	}
 }

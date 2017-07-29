@@ -10,7 +10,6 @@ public class Spawner : MonoBehaviour {
 	public float delayBetweenWaves = 10f;
 	public Text text;
 
-
 	void Start () {
 		StartCoroutine(Spawning());
 	}
@@ -24,14 +23,15 @@ public class Spawner : MonoBehaviour {
 			text.text = (i+1).ToString();
 			for (int j = 0; j < waves[i].enemies.Length; j++)
 			{
+				yield return new WaitForSeconds(delayBetweenSpawns);
 				if (waves[i].enemies[j].prefab == null)
 					yield return new WaitForSeconds(waves[i].enemies[j].amount);
 				else
 					SpawnEnemies(waves[i].enemies[j].prefab, waves[i].enemies[j].amount);
-				yield return new WaitForSeconds(delayBetweenSpawns);
 			}
 		}
-		//TODO victory
+		while (Enemy.activeEnemies.Count > 0) yield return null;
+		GameManager.WinGame();
 	}
 
 	IEnumerator WaitForWave()

@@ -61,4 +61,9 @@ public class GameManager : MonoBehaviour {
 		instance.generator.RecalculateEfficiency();
 		//TODO Do structural damage
 	}
+
+	static public void WinGame()
+	{
+		//TODO Victory
+	}
 }
