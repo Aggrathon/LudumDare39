@@ -1307,6 +1307,11 @@ Prefab:
       propertyPath: m_Name
       value: ContactPoint (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 212757468782015482, guid: fc830ca3de3b2354f97d44a627d4332f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc830ca3de3b2354f97d44a627d4332f, type: 2}
   m_IsPrefabParent: 0
