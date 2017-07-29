@@ -49,6 +49,11 @@ public class GameManager : MonoBehaviour {
 		return true;
 	}
 
+	static public bool CheckMoney(int amount)
+	{
+		return amount <= instance.money;
+	}
+
 	static public void AddMoney(int amount)
 	{
 		instance.money += amount;

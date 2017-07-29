@@ -4,6 +4,9 @@ public abstract class Tower : MonoBehaviour {
 
 	public float range = 4;
 	public float cooldown = 0.1f;
+	public int cost = 100;
+
+	[System.NonSerialized] public APowerSource powerSource;
 
 	Enemy target;
 	float timer;
