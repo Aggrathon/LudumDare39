@@ -19,20 +19,18 @@ public class PowerSwitch : APowerSource {
 	{
 		on = false;
 		Switch();
+		powerSource.onPowerStateChanged += UpdateWires;
 	}
 
 	public void Switch()
 	{
 		on = !on;
 		anim.SetBool(animOnBool, on);
-		for (int i = 0; i < wires.Length; i++)
-		{
-			wires[i].material = on ? wireOnMaterial : wireOffMaterial;
-		}
 		if (on)
 			powerSource.AddDrain(powerDrain);
 		else
 			powerSource.RemoveDrain(powerDrain);
+		UpdateWires(powerSource);
 	}
 
 	override public float efficiency
@@ -43,6 +41,14 @@ public class PowerSwitch : APowerSource {
 				return powerSource.efficiency;
 			else
 				return 0;
+		}
+	}
+
+	public override bool powerState
+	{
+		get
+		{
+			return powerSource.powerState && on;
 		}
 	}
 
@@ -58,5 +64,16 @@ public class PowerSwitch : APowerSource {
 		powerDrain -= amount;
 		if(on)
 			powerSource.RemoveDrain(amount);
+	}
+
+	void UpdateWires(APowerSource source)
+	{
+		if (powerState)
+			for (int i = 0; i < wires.Length; i++)
+				wires[i].material = wireOnMaterial;
+		else
+			for (int i = 0; i < wires.Length; i++)
+				wires[i].material = wireOffMaterial;
+		ChangePowerState();
 	}
 }

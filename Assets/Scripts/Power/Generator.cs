@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +26,14 @@ public class Generator : APowerSource
 				return 2 - powerDrain / powerGeneration;
 			else
 				return Mathf.Max(3 - powerDrain / powerGeneration * 2, 0);
+		}
+	}
+
+	public override bool powerState
+	{
+		get
+		{
+			return true;
 		}
 	}
 }
