@@ -7,7 +7,8 @@ public abstract class APowerSource : MonoBehaviour
 
 	protected void ChangePowerState()
 	{
-		onPowerStateChanged.Invoke(this);
+		if (onPowerStateChanged != null)
+			onPowerStateChanged.Invoke(this);
 	}
 
 	public abstract float efficiency { get; }

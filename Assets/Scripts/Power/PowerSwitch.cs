@@ -2,30 +2,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerSwitch : APowerSource {
 
 	bool on;
-	int animOnBool = Animator.StringToHash("on");
 	float powerDrain = 0;
 
-	public Animator anim;
+	public APowerSource powerSource;
+	[Space]
+	public Image img;
+	public Sprite onImage;
+	public Sprite offImage;
 	public Renderer[] wires;
 	public Material wireOnMaterial;
 	public Material wireOffMaterial;
-	public APowerSource powerSource;
+
+	private void Awake()
+	{
+		powerSource.onPowerStateChanged += UpdateWires;
+	}
 
 	private void Start()
 	{
-		on = false;
+		on = !on;
 		Switch();
-		powerSource.onPowerStateChanged += UpdateWires;
 	}
 
 	public void Switch()
 	{
 		on = !on;
-		anim.SetBool(animOnBool, on);
+		img.sprite = on ? onImage : offImage;
 		if (on)
 			powerSource.AddDrain(powerDrain);
 		else
