@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour {
 	static public LinkedList<Enemy> activeEnemies = new LinkedList<Enemy>();
 
 	public float maxHealth = 100;
+	public int killReward = 10;
+	public float penalty = 1;
 
 	NavMeshAgent nav;
 	LinkedListNode<Enemy> node;
@@ -31,14 +33,15 @@ public class Enemy : MonoBehaviour {
 	private void OnDisable()
 	{
 		activeEnemies.Remove(node);
+		GameManager.AddMoney(killReward);
 	}
 
 	private void Update()
 	{
 		if ((transform.position-goal.position).sqrMagnitude < 1)
 		{
-			//TODO Do structural damage
-			gameObject.SetActive(false);
+			GameManager.DoStructuralDamage(penalty);
+			Destroy(gameObject);
 		}
 	}
 
@@ -52,7 +55,7 @@ public class Enemy : MonoBehaviour {
 		health -= amount;
 		if (health < 0)
 		{
-			gameObject.SetActive(false);
+			Destroy(gameObject);
 			return true;
 		}
 		return false;

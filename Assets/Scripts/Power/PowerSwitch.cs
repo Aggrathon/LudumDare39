@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PowerSwitch : APowerSource {
 
-	bool on;
+	[SerializeField] bool on;
 	float powerDrain = 0;
 
 	public APowerSource powerSource;
