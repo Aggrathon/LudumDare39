@@ -79,3 +79,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+*.blend1
+*.blend1.meta

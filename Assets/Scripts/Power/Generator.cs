@@ -29,8 +29,10 @@ public class Generator : APowerSource
 	{
 		if (powerDrain < powerGeneration)
 			_efficiency = 2 - powerDrain / powerGeneration;
+		else if (powerDrain < powerGeneration * 1.5f)
+			_efficiency = ((powerDrain - powerGeneration) * 2 / powerGeneration)*0.8f+0.2f;
 		else
-			_efficiency = Mathf.Max(1 - (powerDrain - powerGeneration) * 2 / powerGeneration, 0);
+			_efficiency = 0.2f;
 		if (onEfficiencyChange != null) onEfficiencyChange(efficiency);
 	}
 

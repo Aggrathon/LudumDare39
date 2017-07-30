@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour {
 	{
 		if (generator == null)
 			generator = FindObjectOfType<Generator>();
-		generator.onEfficiencyChange += v => powerText.text = (int)(v*100)+"%";
+		generator.onEfficiencyChange += OnEfficiency;
 		powerText.text = ((int)generator.efficiency * 100) + "%";
 		money = startingMoney;
 		moneyText.text = money.ToString();
@@ -63,5 +63,16 @@ public class GameManager : MonoBehaviour {
 	static public void WinGame()
 	{
 		UIMethods.Win();
+	}
+
+	void OnEfficiency(float v)
+	{
+		if (v < 1)
+		{
+			//TODO error sound
+			powerText.text = "<color=red>"+(int)(v * 100) + "%<color>";
+		}
+		else
+			powerText.text = (int)(v * 100) + "%";
 	}
 }
