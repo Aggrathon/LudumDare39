@@ -101,18 +101,18 @@ public abstract class Tower : MonoBehaviour {
 
 	public void ShowUpgrades()
 	{
-		UIManager.Upgrade(this);
+		UIMethods.Upgrade(this);
 	}
 
 	public void ShowStats()
 	{
 		if (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt))
-			UIManager.ShowStats(stats, transform.position, range);
+			UIMethods.ShowStats(stats, transform.position, range);
 	}
 
 	public void HideStats()
 	{
-		UIManager.HideStats();
+		UIMethods.HideStats();
 	}
 
 	public bool UpgradeTower(Upgrade upgrade)

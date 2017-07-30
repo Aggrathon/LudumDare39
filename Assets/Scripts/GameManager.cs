@@ -30,16 +30,6 @@ public class GameManager : MonoBehaviour {
 		moneyText.text = money.ToString();
 	}
 
-	public void SetGameSpeed(float speed)
-	{
-		Time.timeScale = speed;
-	}
-
-	private void OnDestroy()
-	{
-		Time.timeScale = 1;
-	}
-
 	static public bool TrySpendMoney(int amount)
 	{
 		if (amount > instance.money)
@@ -65,13 +55,13 @@ public class GameManager : MonoBehaviour {
 		instance.generator.powerGeneration -= amount;
 		if (instance.generator.powerGeneration <= 0)
 		{
-			//TODO Loose game
+			UIMethods.Loose();
 		}
 		instance.generator.RecalculateEfficiency();
 	}
 
 	static public void WinGame()
 	{
-		//TODO Victory
+		UIMethods.Win();
 	}
 }

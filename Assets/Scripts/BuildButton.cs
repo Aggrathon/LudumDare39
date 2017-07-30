@@ -5,7 +5,7 @@ using UnityEngine;
 public class BuildButton : MonoBehaviour {
 
 	[SerializeField]
-	public UIManager.BuildType buildType;
+	public UIMethods.BuildType buildType;
 	public APowerSource powerSource;
 
 	private void Awake()
@@ -20,7 +20,7 @@ public class BuildButton : MonoBehaviour {
 
 	public void ShowBuildMenu()
 	{
-		UIManager.Build(buildType, this);
+		UIMethods.Build(buildType, this);
 	}
 
 	void PowerState(APowerSource ps)

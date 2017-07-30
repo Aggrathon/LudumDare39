@@ -1124,6 +1124,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 1886865646259062}
+  infoPanel: {fileID: 1486458631296500}
+  infoText: {fileID: 114848858763576892}
+  infoLine: {fileID: 120291973897733050}
+  buildPanel: {fileID: 224703736291996044}
+  towerPrefabs:
+  - {fileID: 1433185728267762, guid: 02ea8968b9acb4a4ca369f502857c366, type: 2}
+  - {fileID: 1036036781440590, guid: 95daec9ff137fbb489fc979bd6204a63, type: 2}
+  trapPrefabs: []
+  supportPrefabs: []
+  victoryPanel: {fileID: 1890115934661704}
+  defeatPanel: {fileID: 1686002019189206}
 --- !u!114 &114171921618472792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2609,7 +2620,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114147372479447484}
         m_MethodName: SetGameSpeed
         m_Mode: 4
         m_Arguments:
@@ -2762,7 +2773,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114147372479447484}
         m_MethodName: SetGameSpeed
         m_Mode: 4
         m_Arguments:
