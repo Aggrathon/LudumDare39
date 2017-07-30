@@ -41,6 +41,7 @@ public class PowerSwitch : APowerSource {
 		else
 			powerSource.RemoveDrain(powerDrain);
 		UpdateWires(this);
+		SoundManager.PowerSwitch();
 	}
 
 	override public float efficiency
