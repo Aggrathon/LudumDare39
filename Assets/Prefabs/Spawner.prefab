@@ -75,8 +75,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves: []
-  delayBetweenSpawns: 1
-  delayBetweenWaves: 15
+  delayBetweenSpawns: 1.2
+  delayBetweenWaves: 20
   text: {fileID: 114852594020952654}
 --- !u!114 &114523742032702906
 MonoBehaviour:

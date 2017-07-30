@@ -3389,21 +3389,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224601021787751164, guid: f1d30c5c3b378c8449695254101e2499,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 224553456983580694, guid: f1d30c5c3b378c8449695254101e2499,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 224722757252970402, guid: f1d30c5c3b378c8449695254101e2499,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 40
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f1d30c5c3b378c8449695254101e2499, type: 2}
   m_IsPrefabParent: 0
@@ -4082,12 +4067,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &1301827024 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114762031147029412, guid: f1d30c5c3b378c8449695254101e2499,
-    type: 2}
-  m_PrefabInternal: {fileID: 1006988412}
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1305496037
 Prefab:
   m_ObjectHideFlags: 0
@@ -4391,12 +4370,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224720695312086468, guid: ec37d7ee1b742f04e92f6e290a390d2d,
     type: 2}
   m_PrefabInternal: {fileID: 1418243859}
---- !u!114 &1437649924 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114795183001185200, guid: f1d30c5c3b378c8449695254101e2499,
-    type: 2}
-  m_PrefabInternal: {fileID: 1006988412}
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1467056384
 Prefab:
   m_ObjectHideFlags: 0
@@ -5281,8 +5254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96eeab1c90e5424781c40ec0a3d9ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyText: {fileID: 1437649924}
-  powerText: {fileID: 1301827024}
   generator: {fileID: 1921842499}
   startingMoney: 150
 --- !u!4 &1808357931

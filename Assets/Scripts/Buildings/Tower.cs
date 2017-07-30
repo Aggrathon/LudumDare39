@@ -3,7 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public abstract class Tower : MonoBehaviour {
+public abstract class Tower : MonoBehaviour, IUpgradable
+{
 
 	public float range = 4;
 	public float cooldown = 0.1f;
@@ -11,7 +12,7 @@ public abstract class Tower : MonoBehaviour {
 	public float powerDrain = 10;
 
 	public APowerSource powerSource;
-	[System.NonSerialized] public List<Upgrade> upgrades;
+	public List<UpgradeData> upgrades { get; protected set; }
 
 	Enemy target;
 	Button towerImg;
@@ -94,7 +95,7 @@ public abstract class Tower : MonoBehaviour {
 		powerSource.AddDrain(amount);
 	}
 
-	public int GetUpgradeCost(Upgrade upgrade)
+	public int GetUpgradeCost(UpgradeData upgrade)
 	{
 		return (int)((float)cost * upgrade.costMultiplier);
 	}
@@ -115,7 +116,7 @@ public abstract class Tower : MonoBehaviour {
 		UIMethods.HideStats();
 	}
 
-	public bool UpgradeTower(Upgrade upgrade)
+	public bool Upgrade(UpgradeData upgrade)
 	{
 		if (!GameManager.TrySpendMoney(GetUpgradeCost(upgrade)))
 			return false;
@@ -130,21 +131,5 @@ public abstract class Tower : MonoBehaviour {
 		numUpgrades++;
 		towerLevel.text = Utils.GetRomanNumeral(numUpgrades);
 		return true;
-	}
-
-	public struct Upgrade
-	{
-		public string name;
-		public float costMultiplier;
-		public bool unique;
-		public Action func;
-
-		public Upgrade(string name, Action func, float cost = 1, bool once = false)
-		{
-			this.name = name;
-			this.func = func;
-			this.costMultiplier = cost;
-			this.unique = once;
-		} 
 	}
 }

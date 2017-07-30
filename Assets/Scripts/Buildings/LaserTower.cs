@@ -18,24 +18,24 @@ public class LaserTower : Tower
 		lr = GetComponent<LineRenderer>();
 		lr.enabled = false;
 		autoRotate = false;
-		upgrades = new List<Upgrade>(new Upgrade[]
+		upgrades = new List<UpgradeData>(new UpgradeData[]
 		{
-			new Upgrade("Damage", ()=>{
+			new UpgradeData("Damage", ()=>{
 				damage *= 1.3f;
 				IncreasePowerDrain(powerDrain*0.1f);
 			}),
-			new Upgrade("Cooldown reduction", ()=>{
+			new UpgradeData("Cooldown reduction", ()=>{
 				cooldown = (cooldown-laserTime)*0.5f -laserTime;
 				IncreasePowerDrain(powerDrain*0.1f);
 			}),
-			new Upgrade("Range", ()=>{
+			new UpgradeData("Range", ()=>{
 				range *= 1.3f;
 				IncreasePowerDrain(powerDrain*0.1f);
 			}),
-			new Upgrade("Thighter Arc", ()=>{
+			new UpgradeData("Thighter Arc", ()=>{
 				arcRange *= 0.6f;
 			}, 0.5f),
-			new Upgrade("Wider Arc", ()=>{
+			new UpgradeData("Wider Arc", ()=>{
 				arcRange *= 1.4f;
 			}, 0.5f)
 		});

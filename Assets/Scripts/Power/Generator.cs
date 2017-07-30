@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Generator : APowerSource
+public class Generator : APowerSource, IUpgradable
 {
 
 	public float powerGeneration = 100f;
@@ -13,6 +13,17 @@ public class Generator : APowerSource
 
 	float powerDrain = 0;
 	float _efficiency = 2;
+	int numUpgrades;
+
+	private void Awake()
+	{
+		numUpgrades = 0;
+		upgrades = new List<UpgradeData>(new UpgradeData[]
+		{
+			new UpgradeData("Boost Health", () => health += 20),
+			new UpgradeData("Boost Power", () => powerGeneration += 20)
+		});
+	}
 
 	override public void AddDrain(float amount)
 	{
@@ -45,5 +56,41 @@ public class Generator : APowerSource
 		{
 			return true;
 		}
+	}
+
+	public List<UpgradeData> upgrades { get; protected set; }
+
+	public void ShowStats()
+	{
+		if(Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt))
+			UIMethods.ShowStats(
+				string.Format("Power Supply\nPower output: {0}\nPower demand: {1}\nHealth: {2}\nUpgrades: {3}",
+				powerGeneration, powerDrain, health, numUpgrades), transform.position, 1);
+	}
+
+	public void HideStats()
+	{
+		UIMethods.HideStats();
+	}
+
+	public int GetUpgradeCost(UpgradeData upgrade)
+	{
+		return (int)(upgrade.costMultiplier * (float)(100 + 20 * numUpgrades));
+	}
+
+	public bool Upgrade(UpgradeData upgrade)
+	{
+		if (!GameManager.TrySpendMoney(GetUpgradeCost(upgrade)))
+			return false;
+		if (upgrade.unique)
+			upgrades.Remove(upgrade);
+		numUpgrades++;
+		upgrade.func();
+		return true;
+	}
+
+	public void ShowUpgrades()
+	{
+		UIMethods.Upgrade(this);
 	}
 }

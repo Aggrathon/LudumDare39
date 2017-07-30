@@ -21,24 +21,24 @@ public class BasicTower : Tower
 			projectiles[i] = go.GetComponent<Rigidbody>();
 			go.SetActive(false);
 		}
-		upgrades = new List<Upgrade>(new Upgrade[]
+		upgrades = new List<UpgradeData>(new UpgradeData[]
 		{
-			new Upgrade("Damage", ()=>{
+			new UpgradeData("Damage", ()=>{
 				for (int i = 0; i < projectiles.Length; i++)
 				{
 					projectiles[i].GetComponent<Projectile>().damage *= 1.3f;
 				}
 				IncreasePowerDrain(powerDrain*0.1f);
 			}),
-			new Upgrade("Firing Rate", ()=>{
+			new UpgradeData("Firing Rate", ()=>{
 				cooldown *= 0.75f;
 				IncreasePowerDrain(powerDrain*0.1f);
 			}),
-			new Upgrade("Range", ()=>{
+			new UpgradeData("Range", ()=>{
 				range *= 1.3f;
 				IncreasePowerDrain(powerDrain*0.1f);
 			}),
-			new Upgrade("Projectile Speed", ()=>{
+			new UpgradeData("Projectile Speed", ()=>{
 				projectileSpeed *= 1.5f;
 				IncreasePowerDrain(powerDrain*0.1f);
 			}, 0.5f),

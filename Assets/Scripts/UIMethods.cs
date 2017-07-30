@@ -167,33 +167,33 @@ public class UIMethods : MonoBehaviour
 		}
 		buildPanel.gameObject.SetActive(true);
 	}
-	static public void Upgrade(Tower tower)
+	static public void Upgrade(IUpgradable structure)
 	{
 		RectTransform buildPanel = instance.buildPanel;
 		buildPanel.GetChild(0).GetComponent<Text>().text = "Upgrade";
-		while (buildPanel.childCount < tower.upgrades.Count + 2)
+		while (buildPanel.childCount < structure.upgrades.Count + 2)
 			Instantiate(buildPanel.GetChild(2).gameObject, buildPanel);
-		for (int i = 0; i < tower.upgrades.Count; i++)
+		for (int i = 0; i < structure.upgrades.Count; i++)
 		{
-			Tower.Upgrade u = tower.upgrades[i];
+			UpgradeData u = structure.upgrades[i];
 			Transform tr = buildPanel.GetChild(i + 2);
 			Button b = tr.GetComponent<Button>();
-			int cost = tower.GetUpgradeCost(u);
+			int cost = structure.GetUpgradeCost(u);
 			b.interactable = GameManager.CheckMoney(cost);
 			b.onClick.RemoveAllListeners();
-			b.onClick.AddListener(() => {
-				if (tower.UpgradeTower(u))
+			b.onClick.AddListener((UnityEngine.Events.UnityAction)(() => {
+				if (structure.Upgrade(u))
 				{
 					buildPanel.gameObject.SetActive(false);
 				}
 				else
 					b.interactable = false;
-			});
+			}));
 			tr.GetChild(0).GetComponent<Text>().text = u.name;
 			tr.GetChild(1).GetComponent<Text>().text = cost.ToString();
 			tr.gameObject.SetActive(true);
 		}
-		for (int i = tower.upgrades.Count + 2; i < buildPanel.childCount; i++)
+		for (int i = structure.upgrades.Count + 2; i < buildPanel.childCount; i++)
 		{
 			buildPanel.GetChild(i).gameObject.SetActive(false);
 		}
@@ -203,7 +203,7 @@ public class UIMethods : MonoBehaviour
 	static public void ShowStats(string stats, Vector3 position, float range)
 	{
 		int num = instance.infoLine.positionCount;
-		float div = 1f / (float)(num + 1);
+		float div = 1f / (float)(num - 1);
 		for (int i = 0; i < num; i++)
 		{
 			instance.infoLine.SetPosition(i, position + Quaternion.Euler(0, 360 * i * div, 0) * new Vector3(0, 0, range));
