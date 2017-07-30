@@ -7,6 +7,7 @@ public class Generator : APowerSource
 {
 
 	public float powerGeneration = 100f;
+	public float health = 100;
 
 	public event Action<float> onEfficiencyChange;
 

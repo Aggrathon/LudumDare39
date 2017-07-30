@@ -20,7 +20,10 @@ public class UIMethods : MonoBehaviour
 	[Space]
 	public GameObject victoryPanel;
 	public GameObject defeatPanel;
-
+	[Space]
+	public Text money;
+	public Text power;
+	public Text health;
 
 	float timeScale = 1;
 
@@ -91,6 +94,26 @@ public class UIMethods : MonoBehaviour
 	{
 		if (Input.GetKeyUp(KeyCode.Escape))
 			ToggleMenu();
+	}
+
+	public static void SetHealth(float amount)
+	{
+		instance.health.text = Mathf.Round(amount) + " %";
+	}
+
+	public static void SetMoney(int amount)
+	{
+		instance.money.text = amount.ToString();
+	}
+
+	public static void SetPower(float amount)
+	{
+		if (amount < 1)
+		{
+			instance.power.text = "<color=red>" + (int)(amount * 100) + "%</color>";
+		}
+		else
+			instance.power.text = (int)(amount * 100) + "%";
 	}
 
 	static public void Build(BuildType type, BuildButton btn)

@@ -6,11 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	static GameManager instance;
-
-	public Text moneyText;
-	public Text powerText;
+	
 	public Generator generator;
-	[Space]
 	public int startingMoney = 100;
 
 	int money;
@@ -25,9 +22,9 @@ public class GameManager : MonoBehaviour {
 		if (generator == null)
 			generator = FindObjectOfType<Generator>();
 		generator.onEfficiencyChange += OnEfficiency;
-		powerText.text = ((int)generator.efficiency * 100) + "%";
-		money = startingMoney;
-		moneyText.text = money.ToString();
+		OnEfficiency(generator.efficiency);
+		AddMoney(startingMoney);
+		UIMethods.SetHealth(generator.health);
 	}
 
 	static public bool TrySpendMoney(int amount)
@@ -35,7 +32,7 @@ public class GameManager : MonoBehaviour {
 		if (amount > instance.money)
 			return false;
 		instance.money -= amount;
-		instance.moneyText.text = instance.money.ToString();
+		UIMethods.SetMoney(instance.money);
 		return true;
 	}
 
@@ -47,16 +44,18 @@ public class GameManager : MonoBehaviour {
 	static public void AddMoney(int amount)
 	{
 		instance.money += amount;
-		instance.moneyText.text = instance.money.ToString();
+		UIMethods.SetMoney(instance.money);
 	}
 
 	static public void DoStructuralDamage(float amount)
 	{
-		instance.generator.powerGeneration -= amount;
-		if (instance.generator.powerGeneration <= 0)
+		instance.generator.powerGeneration -= amount/2;
+		instance.generator.health -= amount;
+		if (instance.generator.health <= 0)
 		{
 			UIMethods.Loose();
 		}
+		UIMethods.SetHealth(instance.generator.health);
 		instance.generator.RecalculateEfficiency();
 	}
 
@@ -70,9 +69,7 @@ public class GameManager : MonoBehaviour {
 		if (v < 1)
 		{
 			//TODO error sound
-			powerText.text = "<color=red>"+(int)(v * 100) + "%<color>";
 		}
-		else
-			powerText.text = (int)(v * 100) + "%";
+		UIMethods.SetPower(v);
 	}
 }

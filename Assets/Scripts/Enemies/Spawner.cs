@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour {
 		for (int i = 0; i < waves.Length; i++)
 		{
 			yield return WaitForWave();
-			text.text = (i+1).ToString();
+			text.text = Utils.GetRomanNumeral(i+1);
 			for (int j = 0; j < waves[i].enemies.Length; j++)
 			{
 				yield return new WaitForSeconds(delayBetweenSpawns);

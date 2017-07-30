@@ -39,9 +39,9 @@ public class BasicTower : Tower
 				IncreasePowerDrain(powerDrain*0.1f);
 			}),
 			new Upgrade("Projectile Speed", ()=>{
-				projectileSpeed *= 1.4f;
+				projectileSpeed *= 1.5f;
 				IncreasePowerDrain(powerDrain*0.1f);
-			}),
+			}, 0.5f),
 		});
 	}
 
