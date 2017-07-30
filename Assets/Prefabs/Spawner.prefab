@@ -74,14 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac79eda4e7026f24d902ecb8720b548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - {fileID: 11400000, guid: 97d2acd27145eea49839276dc89453a0, type: 2}
-  - {fileID: 11400000, guid: 715a17eaf2ef8c649a60d4487238cc34, type: 2}
-  - {fileID: 11400000, guid: da0fac3105ca7d14f9a9e5093232e958, type: 2}
-  - {fileID: 11400000, guid: 76559e418cafe044c851885bf51d9437, type: 2}
-  - {fileID: 11400000, guid: 9ffdd56d456f3ca42a0a309030823315, type: 2}
-  - {fileID: 11400000, guid: 9ede1af3e300d51408e3b8be96aeef0d, type: 2}
-  - {fileID: 11400000, guid: 31fce633124bcfe419f2e4c2952b3598, type: 2}
+  waves: []
   delayBetweenSpawns: 1
   delayBetweenWaves: 15
   text: {fileID: 114852594020952654}

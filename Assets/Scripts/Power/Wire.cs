@@ -9,8 +9,14 @@ public class Wire : MonoBehaviour {
 	public Transform[] points;
 	public float offset = 0.05f;
 
-	[ContextMenu("Update Points")]
 	private void Start()
+	{
+		if (points.Length != GetComponent<LineRenderer>().positionCount)
+			UpdatePoints();
+	}
+
+	[ContextMenu("Update Points")]
+	private void UpdatePoints()
 	{
 		LineRenderer lr = GetComponent<LineRenderer>();
 		lr.positionCount = points.Length*2;
