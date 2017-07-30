@@ -7,6 +7,7 @@ public class Tutorial1 : MonoBehaviour {
 	public Spawner spawner;
 	public Generator generator;
 	public GameObject introText;
+	public GameObject buttonText;
 	public GameObject efficiencyText;
 	public GameObject moreInfoText;
 
@@ -26,10 +27,13 @@ public class Tutorial1 : MonoBehaviour {
 			yield return null;
 		introText.SetActive(false);
 		spawner.gameObject.SetActive(true);
-		while (generator.efficiency > 1.6f)
+		while (generator.efficiency > 1.7f)
+			yield return null;
+		buttonText.SetActive(true);
+		while (generator.efficiency > 1.4f)
 			yield return null;
 		efficiencyText.SetActive(true);
-		while (generator.efficiency > 1.3f)
+		while (generator.efficiency > 1.1f)
 			yield return null;
 		moreInfoText.SetActive(true);
 	}

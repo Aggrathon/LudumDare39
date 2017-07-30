@@ -117,7 +117,7 @@ public class UIManager : MonoBehaviour {
 	static public void ShowStats(string stats, Vector3 position, float range)
 	{
 		int num = instance.infoLine.positionCount;
-		float div = 1f / (float)num;
+		float div = 1f / (float)(num+1);
 		for (int i = 0; i < num; i++)
 		{
 			instance.infoLine.SetPosition(i, position + Quaternion.Euler(0, 360 * i * div, 0) * new Vector3(0, 0, range));
