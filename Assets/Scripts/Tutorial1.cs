@@ -27,14 +27,17 @@ public class Tutorial1 : MonoBehaviour {
 			yield return null;
 		introText.SetActive(false);
 		spawner.gameObject.SetActive(true);
-		while (generator.efficiency > 1.7f)
+		while (generator.efficiency > 1.75f)
 			yield return null;
 		buttonText.SetActive(true);
-		while (generator.efficiency > 1.4f)
+		SoundManager.TutorialTip();
+		while (generator.efficiency > 1.5f)
 			yield return null;
 		efficiencyText.SetActive(true);
-		while (generator.efficiency > 1.1f)
+		SoundManager.TutorialTip();
+		while (generator.efficiency > 1.2f)
 			yield return null;
 		moreInfoText.SetActive(true);
+		SoundManager.TutorialTip();
 	}
 }

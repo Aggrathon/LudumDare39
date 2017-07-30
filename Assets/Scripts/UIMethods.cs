@@ -153,6 +153,7 @@ public class UIMethods : MonoBehaviour
 					go.GetComponent<Tower>().powerSource = btn.powerSource;
 					Destroy(btn.gameObject);
 					buildPanel.gameObject.SetActive(false);
+					SoundManager.Build();
 				}
 				else
 					b.interactable = false;

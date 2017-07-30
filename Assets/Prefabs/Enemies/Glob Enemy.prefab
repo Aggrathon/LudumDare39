@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559eec34389ddd24fb8be9239ca1e4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 400
   killReward: 20
   penalty: 10
 --- !u!135 &135953787800377934

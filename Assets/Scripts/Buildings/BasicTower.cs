@@ -8,12 +8,15 @@ public class BasicTower : Tower
 	public float projectileSpeed = 10;
 	public GameObject projectilePrefab;
 	public bool waitForRotation = true;
+	public AudioClip[] sounds;
 
 	Rigidbody[] projectiles;
+	AudioSource audioSource;
 	int index = 0;
 
 	private void Awake()
 	{
+		audioSource = GetComponent<AudioSource>();
 		projectiles = new Rigidbody[5];
 		for (int i = 0; i < projectiles.Length; i++)
 		{
@@ -58,6 +61,9 @@ public class BasicTower : Tower
 		projectiles[index].gameObject.SetActive(true);
 		projectiles[index].velocity = transform.forward * projectileSpeed;
 		index = (index + 1) % projectiles.Length;
+		audioSource.pitch = UnityEngine.Random.Range(0.6f, 1.3f);
+		audioSource.PlayOneShot(sounds[UnityEngine.Random.Range(0, sounds.Length)]);
+
 	}
 
 	public override string stats
