@@ -321,7 +321,7 @@ MonoBehaviour:
   cost: 100
   powerDrain: 10
   powerSource: {fileID: 0}
-  projectileSpeed: 10
+  projectileSpeed: 9
   projectilePrefab: {fileID: 1059442374096242, guid: 4c9735ea9d41b9249a7c61a930134bf0,
     type: 2}
   waitForRotation: 1

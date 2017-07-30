@@ -348,12 +348,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 4
-  cooldown: 1
+  cooldown: 1.2
   cost: 120
   powerDrain: 15
   powerSource: {fileID: 0}
   damage: 30
-  laserTime: 0.6
+  laserTime: 0.8
   arcRange: 1
   sounds:
   - {fileID: 8300000, guid: 0ace5ec164ea98d40952193fbcc41578, type: 3}
