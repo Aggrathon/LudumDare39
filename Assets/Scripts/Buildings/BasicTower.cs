@@ -61,7 +61,7 @@ public class BasicTower : Tower
 		projectiles[index].gameObject.SetActive(true);
 		projectiles[index].velocity = transform.forward * projectileSpeed;
 		index = (index + 1) % projectiles.Length;
-		audioSource.pitch = UnityEngine.Random.Range(0.6f, 1.3f);
+		audioSource.pitch = UnityEngine.Random.Range(0.7f, 1.2f);
 		audioSource.PlayOneShot(sounds[UnityEngine.Random.Range(0, sounds.Length)]);
 
 	}

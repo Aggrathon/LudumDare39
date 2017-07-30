@@ -9,12 +9,15 @@ public class LaserTower : Tower
 	public float damage = 10;
 	public float laserTime = 0.2f;
 	[Range(0f, 2f)]public float arcRange = 0.8f;
+	public AudioClip[] sounds;
 
 	LineRenderer lr;
 	RaycastHit[] hits = new RaycastHit[10];
+	AudioSource audioSource;
 
 	protected void Awake()
 	{
+		audioSource = GetComponent<AudioSource>();
 		lr = GetComponent<LineRenderer>();
 		lr.enabled = false;
 		autoRotate = false;
@@ -57,8 +60,12 @@ public class LaserTower : Tower
 		lr.enabled = true;
 		float elapsed = 0;
 		float prevRange = range*0.8f;
+		audioSource.pitch = UnityEngine.Random.Range(0.98f, 1.02f);
+		audioSource.PlayOneShot(sounds[UnityEngine.Random.Range(0, sounds.Length)]);
 		do
 		{
+			float volume = ((elapsed / laserTime) * 2f - 1f);
+			audioSource.volume = 1f - volume * volume * volume * volume;
 			Vector3 dir = Vector3.Lerp(dir1, dir2, elapsed / laserTime).normalized;
 			int numHits = Physics.RaycastNonAlloc(transform.position, dir, hits, range);
 			prevRange *= 0.9f;

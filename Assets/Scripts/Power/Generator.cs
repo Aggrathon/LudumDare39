@@ -20,8 +20,8 @@ public class Generator : APowerSource, IUpgradable
 		numUpgrades = 0;
 		upgrades = new List<UpgradeData>(new UpgradeData[]
 		{
-			new UpgradeData("Boost Health", () => health += 20),
-			new UpgradeData("Boost Power", () => powerGeneration += 20)
+			new UpgradeData("Boost Health", () => { health += 20; UIMethods.SetHealth(health); }),
+			new UpgradeData("Boost Power", () => { powerGeneration += 20; RecalculateEfficiency(); })
 		});
 	}
 

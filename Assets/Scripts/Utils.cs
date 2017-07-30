@@ -13,7 +13,7 @@ public static class Utils
 		if (number == 4)
 			return "IV";
 		if (number < 9)
-			return new string('I', number - 5) + "V";
+			return "V" + new string('I', number - 5);
 		if (number == 9)
 			return "IX";
 		if (number < 40)
