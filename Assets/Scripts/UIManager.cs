@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour {
 	static public void Build(BuildType type, BuildButton btn)
 	{
 		RectTransform buildPanel = instance.buildPanel;
+		buildPanel.GetChild(0).GetComponent<Text>().text = "Build";
 		GameObject[] prefabs;
 		switch (type)
 		{
@@ -70,6 +71,39 @@ public class UIManager : MonoBehaviour {
 			tr.gameObject.SetActive(true);
 		}
 		for (int i = prefabs.Length+2; i < buildPanel.childCount; i++)
+		{
+			buildPanel.GetChild(i).gameObject.SetActive(false);
+		}
+		buildPanel.gameObject.SetActive(true);
+	}
+
+	static public void Upgrade(Tower tower)
+	{
+		RectTransform buildPanel = instance.buildPanel;
+		buildPanel.GetChild(0).GetComponent<Text>().text = "Upgrade";
+		while (buildPanel.childCount < tower.upgrades.Count + 2)
+			Instantiate(buildPanel.GetChild(2).gameObject, buildPanel);
+		for (int i = 0; i < tower.upgrades.Count; i++)
+		{
+			Tower.Upgrade u = tower.upgrades[i];
+			Transform tr = buildPanel.GetChild(i + 2);
+			Button b = tr.GetComponent<Button>();
+			int cost = tower.GetUpgradeCost(u);
+			b.interactable = GameManager.CheckMoney(cost);
+			b.onClick.RemoveAllListeners();
+			b.onClick.AddListener(() => {
+				if (tower.UpgradeTower(u))
+				{
+					buildPanel.gameObject.SetActive(false);
+				}
+				else
+					b.interactable = false;
+			});
+			tr.GetChild(0).GetComponent<Text>().text = u.name;
+			tr.GetChild(1).GetComponent<Text>().text = cost.ToString();
+			tr.gameObject.SetActive(true);
+		}
+		for (int i = tower.upgrades.Count + 2; i < buildPanel.childCount; i++)
 		{
 			buildPanel.GetChild(i).gameObject.SetActive(false);
 		}

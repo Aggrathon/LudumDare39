@@ -21,6 +21,28 @@ public class BasicTower : Tower
 			projectiles[i] = go.GetComponent<Rigidbody>();
 			go.SetActive(false);
 		}
+		upgrades = new List<Upgrade>(new Upgrade[]
+		{
+			new Upgrade("Damage", ()=>{
+				for (int i = 0; i < projectiles.Length; i++)
+				{
+					projectiles[i].GetComponent<Projectile>().damage *= 1.3f;
+				}
+				IncreasePowerDrain(powerDrain*0.1f);
+			}),
+			new Upgrade("Firing Rate", ()=>{
+				cooldown *= 0.75f;
+				IncreasePowerDrain(powerDrain*0.1f);
+			}),
+			new Upgrade("Range", ()=>{
+				range *= 1.3f;
+				IncreasePowerDrain(powerDrain*0.1f);
+			}),
+			new Upgrade("Projectile Speed", ()=>{
+				projectileSpeed *= 1.4f;
+				IncreasePowerDrain(powerDrain*0.1f);
+			}),
+		});
 	}
 
 	protected override void Shoot(Enemy target)

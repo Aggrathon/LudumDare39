@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 [RequireComponent(typeof(LineRenderer))]
 public class LaserTower : Tower
@@ -19,6 +18,27 @@ public class LaserTower : Tower
 		lr = GetComponent<LineRenderer>();
 		lr.enabled = false;
 		autoRotate = false;
+		upgrades = new List<Upgrade>(new Upgrade[]
+		{
+			new Upgrade("Damage", ()=>{
+				damage *= 1.3f;
+				IncreasePowerDrain(powerDrain*0.1f);
+			}),
+			new Upgrade("Cooldown reduction", ()=>{
+				cooldown = (cooldown-laserTime)*0.5f -laserTime;
+				IncreasePowerDrain(powerDrain*0.1f);
+			}),
+			new Upgrade("Range", ()=>{
+				range *= 1.3f;
+				IncreasePowerDrain(powerDrain*0.1f);
+			}),
+			new Upgrade("Thighter Arc", ()=>{
+				arcRange *= 0.6f;
+			}, 0.5f),
+			new Upgrade("Wider Arc", ()=>{
+				arcRange *= 1.4f;
+			}, 0.5f)
+		});
 	}
 
 	protected override void Shoot(Enemy target)
