@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
 		if (generator == null)
 			generator = FindObjectOfType<Generator>();
 		generator.onEfficiencyChange += v => powerText.text = (int)(v*100)+"%";
-		powerText.text = ((int)generator.efficiency).ToString();
+		powerText.text = ((int)generator.efficiency * 100) + "%";
 		money = startingMoney;
 		moneyText.text = money.ToString();
 	}

@@ -154,12 +154,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 4
-  cooldown: 0.6
+  cooldown: 1
   cost: 100
   powerDrain: 10
   damage: 50
-  laserTime: 0.4
-  arcRange: 0.8
+  laserTime: 0.6
+  arcRange: 0.6
 --- !u!114 &114645714382774600
 MonoBehaviour:
   m_ObjectHideFlags: 1

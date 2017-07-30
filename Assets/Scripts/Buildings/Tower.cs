@@ -31,9 +31,13 @@ public abstract class Tower : MonoBehaviour {
 			firingTimer -= Time.deltaTime * powerSource.efficiency;
 		if (autoRotate && target != null)
 		{
-			Vector3 lt = target.transform.position;
-			lt.y = transform.position.y;
-			transform.LookAt(lt, Vector3.up);
+			Vector3 lt = target.GetFuturePosition(0.1f)-transform.position;
+			lt.y = 0;
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lt, Vector3.up), 180 * Time.deltaTime);
+		}
+		else
+		{
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, 60 * Time.deltaTime);
 		}
 	}
 

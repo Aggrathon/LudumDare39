@@ -45,7 +45,7 @@ public class LaserTower : Tower
 			for (int i = 0; i < numHits; i++)
 			{
 				Enemy enemy = hits[i].collider.GetComponent<Enemy>();
-				if (enemy.Damage(damage * Time.deltaTime))
+				if (enemy != null && enemy.Damage(damage * Time.deltaTime))
 					SetKilled(enemy);
 				float dist = hits[i].distance + 0.4f;
 				if (dist > prevRange)

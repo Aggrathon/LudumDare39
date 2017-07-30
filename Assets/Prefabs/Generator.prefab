@@ -153,7 +153,7 @@ MonoBehaviour:
   source: {fileID: 4467991053816758}
   target: {fileID: 0}
   segments: 20
-  directionStrength: 0.15
+  directionStrength: 0.2
 --- !u!114 &114234972669300964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,7 +225,7 @@ MonoBehaviour:
   source: {fileID: 4496318649080998}
   target: {fileID: 0}
   segments: 20
-  directionStrength: 0.15
+  directionStrength: 0.2
 --- !u!114 &114677169009508876
 MonoBehaviour:
   m_ObjectHideFlags: 1
