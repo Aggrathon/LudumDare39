@@ -352,7 +352,7 @@ MonoBehaviour:
   cost: 120
   powerDrain: 15
   powerSource: {fileID: 0}
-  damage: 30
+  damage: 20
   laserTime: 0.8
   arcRange: 1
   sounds:

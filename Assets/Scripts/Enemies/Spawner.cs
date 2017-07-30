@@ -24,11 +24,7 @@ public class Spawner : MonoBehaviour {
 		{
 			yield return WaitForWave();
 			text.text = Utils.GetRomanNumeral(i+1);
-<<<<<<< HEAD
 			if (onWave != null) onWave(i);
-=======
-			if (onWave != null) onWave();
->>>>>>> origin/master
 			for (int j = 0; j < waves[i].enemies.Length; j++)
 			{
 				yield return new WaitForSeconds(delayBetweenSpawns);

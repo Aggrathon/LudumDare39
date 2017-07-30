@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 70
-  killReward: 15
+  killReward: 10
   penalty: 4
 --- !u!135 &135027648710047990
 SphereCollider:

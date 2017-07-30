@@ -317,11 +317,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 5
-  cooldown: 0.5
+  cooldown: 0.7
   cost: 100
   powerDrain: 10
   powerSource: {fileID: 0}
-  projectileSpeed: 9
+  projectileSpeed: 8
   projectilePrefab: {fileID: 1059442374096242, guid: 4c9735ea9d41b9249a7c61a930134bf0,
     type: 2}
   waitForRotation: 1

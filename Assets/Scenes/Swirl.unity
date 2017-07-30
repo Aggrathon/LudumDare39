@@ -4635,6 +4635,7 @@ MonoBehaviour:
   buttonText: {fileID: 2077639454}
   efficiencyText: {fileID: 2019850213}
   moreInfoText: {fileID: 433411758}
+  upgradeText: {fileID: 0}
 --- !u!114 &602555101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5014,7 +5015,7 @@ Prefab:
     - target: {fileID: 114315642572137972, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
         type: 2}
       propertyPath: waves.Array.size
-      value: 7
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 224301825168319394, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
         type: 2}
@@ -5157,6 +5158,54 @@ Prefab:
       propertyPath: waves.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: d01661e625647774d9f3cfa39bf09024,
+        type: 2}
+    - target: {fileID: 114315642572137972, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
+        type: 2}
+      propertyPath: waves.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9564a2d1ab7196641ba502761fc22297,
+        type: 2}
+    - target: {fileID: 114315642572137972, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
+        type: 2}
+      propertyPath: waves.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 025244b5e0174b44e98b383b07d26e14,
+        type: 2}
+    - target: {fileID: 114315642572137972, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
+        type: 2}
+      propertyPath: waves.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 368b6f9f35916b147b71b1a7ae1fb545,
+        type: 2}
+    - target: {fileID: 114315642572137972, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
+        type: 2}
+      propertyPath: waves.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: daa0c5abed35b3f4b8b42420a12973b2,
+        type: 2}
+    - target: {fileID: 114315642572137972, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
+        type: 2}
+      propertyPath: waves.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 81f9388cd5b9a9f4bac97eb837ee55c7,
+        type: 2}
+    - target: {fileID: 114315642572137972, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
+        type: 2}
+      propertyPath: waves.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 27464192ac158da4d9155389e353da34,
+        type: 2}
+    - target: {fileID: 114315642572137972, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
+        type: 2}
+      propertyPath: waves.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 752b9a1d39c325e47837a7804db3a906,
+        type: 2}
+    - target: {fileID: 114315642572137972, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9,
+        type: 2}
+      propertyPath: waves.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e920805770acd447976eb6111c83247,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a6bc44d04de0cd4baeb8d1b4dad49c9, type: 2}

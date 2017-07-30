@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f1c6db57f10cff45b2dda55383c49be, type: 3}
-  m_Name: Wave 7
+  m_Name: Wave 10
   m_EditorClassIdentifier: 
   enemies:
-  - prefab: {fileID: 1557530596018290, guid: fa8a01cb2bb9de64184aa2e3120775be, type: 2}
-    amount: 6
+  - prefab: {fileID: 1304136598215028, guid: 9ef0ec89983dd3747b8eeea1bedcbbb6, type: 2}
+    amount: 2
   - prefab: {fileID: 0}
     amount: 2
-  - prefab: {fileID: 1304136598215028, guid: 9ef0ec89983dd3747b8eeea1bedcbbb6, type: 2}
-    amount: 1
+  - prefab: {fileID: 1557530596018290, guid: fa8a01cb2bb9de64184aa2e3120775be, type: 2}
+    amount: 6
   - prefab: {fileID: 1174550578550534, guid: e04513819933c8849af69fa951baf2d8, type: 2}
-    amount: 3
+    amount: 4
