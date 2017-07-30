@@ -67,7 +67,7 @@ public class PowerSwitch : APowerSource {
 	{
 		powerDrain += amount;
 		if (on)
-			powerSource.AddDrain(powerDrain);
+			powerSource.AddDrain(amount);
 	}
 
 	override public void RemoveDrain(float amount)
