@@ -25,9 +25,20 @@ public class Enemy : MonoBehaviour {
 
 	void OnEnable()
 	{
-		nav.SetDestination(goal.position);
 		node = activeEnemies.AddLast(this);
 		health = maxHealth;
+		if (!nav.isOnNavMesh)
+		{
+			nav.enabled = false;
+			NavMeshHit closestHit;
+			if (NavMesh.SamplePosition(transform.position, out closestHit, 10, nav.areaMask))
+			{
+				transform.position = closestHit.position;
+			}
+			nav.enabled = true;
+		}
+		nav.Warp(transform.position);
+		nav.SetDestination(goal.position);
 	}
 
 	private void OnDisable()

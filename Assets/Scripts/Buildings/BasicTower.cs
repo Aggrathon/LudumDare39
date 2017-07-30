@@ -47,7 +47,7 @@ public class BasicTower : Tower
 
 	protected override void Shoot(Enemy target)
 	{
-		if(Vector3.Angle(transform.forward, target.transform.position-transform.position) > 30)
+		if(Vector3.Angle(transform.forward, target.transform.position-transform.position) > 20)
 		{
 			firingTimer = 0.1f;
 			return;

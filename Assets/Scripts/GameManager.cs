@@ -63,8 +63,11 @@ public class GameManager : MonoBehaviour {
 	static public void DoStructuralDamage(float amount)
 	{
 		instance.generator.powerGeneration -= amount;
+		if (instance.generator.powerGeneration <= 0)
+		{
+			//TODO Loose game
+		}
 		instance.generator.RecalculateEfficiency();
-		//TODO Do structural damage
 	}
 
 	static public void WinGame()

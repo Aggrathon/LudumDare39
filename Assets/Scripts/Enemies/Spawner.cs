@@ -52,9 +52,10 @@ public class Spawner : MonoBehaviour {
 
 	void SpawnEnemies(GameObject prefab, int amount)
 	{
+		Vector3 pos = transform.position;
 		for (int i = 0; i < amount; i++)
 		{
-			Instantiate(prefab, transform.position, Quaternion.identity).transform.parent = transform;
+			Instantiate(prefab, pos, Quaternion.identity);
 		}
 	}
 }

@@ -34,7 +34,7 @@ public abstract class Tower : MonoBehaviour {
 	void Update () {
 		if(firingTimer < 0)
 		{
-			if (GetTarget() != null)
+			if (GetTarget() != null && powerSource.powerState)
 			{
 				firingTimer += cooldown;
 				Shoot(target);

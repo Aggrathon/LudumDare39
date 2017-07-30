@@ -8,7 +8,7 @@ public class LaserTower : Tower
 {
 	public float damage = 10;
 	public float laserTime = 0.2f;
-	[Range(0f, 1f)]public float arcRange = 0.8f;
+	[Range(0f, 2f)]public float arcRange = 0.8f;
 
 	LineRenderer lr;
 	RaycastHit[] hits = new RaycastHit[10];

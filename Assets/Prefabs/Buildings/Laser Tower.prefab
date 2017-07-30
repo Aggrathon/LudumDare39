@@ -273,7 +273,7 @@ MonoBehaviour:
   powerSource: {fileID: 0}
   damage: 30
   laserTime: 0.6
-  arcRange: 0.7
+  arcRange: 1
 --- !u!114 &114645714382774600
 MonoBehaviour:
   m_ObjectHideFlags: 1

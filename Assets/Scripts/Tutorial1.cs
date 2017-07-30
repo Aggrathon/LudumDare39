@@ -26,14 +26,10 @@ public class Tutorial1 : MonoBehaviour {
 			yield return null;
 		introText.SetActive(false);
 		spawner.gameObject.SetActive(true);
-		while (generator.efficiency > 1.85f)
+		while (generator.efficiency > 1.6f)
 			yield return null;
 		efficiencyText.SetActive(true);
-		while (!GameManager.CheckMoney(100))
-			yield return null;
-		while (GameManager.CheckMoney(100))
-			yield return null;
-		while (!GameManager.CheckMoney(100))
+		while (generator.efficiency > 1.3f)
 			yield return null;
 		moreInfoText.SetActive(true);
 	}
