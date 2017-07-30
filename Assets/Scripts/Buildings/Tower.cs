@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Tower : MonoBehaviour {
 
@@ -10,12 +11,16 @@ public abstract class Tower : MonoBehaviour {
 	[System.NonSerialized] public APowerSource powerSource;
 
 	Enemy target;
+	Button towerImg;
 	protected float firingTimer;
 	protected bool autoRotate = true;
 
 	virtual protected void Start()
 	{
 		powerSource.AddDrain(powerDrain);
+		towerImg = GetComponentInChildren<Button>();
+		powerSource.onPowerStateChanged += UpdatePowerState;
+		UpdatePowerState(powerSource);
 	}
 	
 	void Update () {
@@ -23,13 +28,13 @@ public abstract class Tower : MonoBehaviour {
 		{
 			if (GetTarget() != null)
 			{
-				Shoot(target);
 				firingTimer += cooldown;
+				Shoot(target);
 			}
 		}
 		else
 			firingTimer -= Time.deltaTime * powerSource.efficiency;
-		if (autoRotate && target != null)
+		if (autoRotate && target != null && powerSource.powerState)
 		{
 			Vector3 lt = target.GetFuturePosition(0.1f)-transform.position;
 			lt.y = 0;
@@ -68,5 +73,10 @@ public abstract class Tower : MonoBehaviour {
 	{
 		if (enemy == target)
 			target = null;
+	}
+
+	void UpdatePowerState(APowerSource ps)
+	{
+		towerImg.interactable = ps.powerState;
 	}
 }

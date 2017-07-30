@@ -14,7 +14,7 @@ public class LaserTower : Tower
 	LineRenderer lr;
 	RaycastHit[] hits = new RaycastHit[10];
 
-	private void Awake()
+	protected void Awake()
 	{
 		lr = GetComponent<LineRenderer>();
 		lr.enabled = false;

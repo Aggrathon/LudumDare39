@@ -7,6 +7,7 @@ public class BasicTower : Tower
 {
 	public float projectileSpeed = 10;
 	public GameObject projectilePrefab;
+	public bool waitForRotation = true;
 
 	Rigidbody[] projectiles;
 	int index = 0;
@@ -24,8 +25,15 @@ public class BasicTower : Tower
 
 	protected override void Shoot(Enemy target)
 	{
+		if(Vector3.Angle(transform.forward, target.transform.position-transform.position) > 30)
+		{
+			firingTimer = 0.1f;
+			return;
+		}
+		Vector3 pos = transform.position + transform.forward * 0.7f;
+		projectiles[index].MovePosition(pos);
+		projectiles[index].transform.position = pos;
 		projectiles[index].gameObject.SetActive(true);
-		projectiles[index].MovePosition(transform.position + transform.forward * 0.7f);
 		projectiles[index].velocity = transform.forward * projectileSpeed;
 		index = (index + 1) % projectiles.Length;
 	}
