@@ -25,8 +25,11 @@ public class PowerSwitch : APowerSource {
 
 	private void Start()
 	{
-		on = !on;
-		Switch();
+		if (!on)
+		{
+			UpdateWires(this);
+			img.sprite = offImage;
+		}
 	}
 
 	public void Switch()
@@ -37,7 +40,7 @@ public class PowerSwitch : APowerSource {
 			powerSource.AddDrain(powerDrain);
 		else
 			powerSource.RemoveDrain(powerDrain);
-		UpdateWires(powerSource);
+		UpdateWires(this);
 	}
 
 	override public float efficiency

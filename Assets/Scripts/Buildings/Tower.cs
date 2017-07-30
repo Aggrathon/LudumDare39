@@ -10,7 +10,7 @@ public abstract class Tower : MonoBehaviour {
 	public int cost = 100;
 	public float powerDrain = 10;
 
-	[System.NonSerialized] public APowerSource powerSource;
+	public APowerSource powerSource;
 	[System.NonSerialized] public List<Upgrade> upgrades;
 
 	Enemy target;
