@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour {
+
+	public event Action<int> onWave;
 
 	public Wave[] waves;
 	public float delayBetweenSpawns = 1f;
@@ -21,6 +24,7 @@ public class Spawner : MonoBehaviour {
 		{
 			yield return WaitForWave();
 			text.text = Utils.GetRomanNumeral(i+1);
+			if (onWave != null) onWave(i);
 			for (int j = 0; j < waves[i].enemies.Length; j++)
 			{
 				yield return new WaitForSeconds(delayBetweenSpawns);
