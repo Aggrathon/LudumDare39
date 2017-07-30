@@ -37,6 +37,8 @@ public class UIMethods : MonoBehaviour
 		instance = this;
 		timeScale = 1;
 		Time.timeScale = 1;
+		if (menu == null)
+			enabled = false;
 	}
 
 	public void SetGameSpeed(float speed)
