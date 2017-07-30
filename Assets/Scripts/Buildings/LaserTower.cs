@@ -62,10 +62,11 @@ public class LaserTower : Tower
 			Vector3 dir = Vector3.Lerp(dir1, dir2, elapsed / laserTime).normalized;
 			int numHits = Physics.RaycastNonAlloc(transform.position, dir, hits, range);
 			prevRange *= 0.9f;
+			float d = damage * Time.deltaTime * powerSource.efficiency;
 			for (int i = 0; i < numHits; i++)
 			{
 				Enemy enemy = hits[i].collider.GetComponent<Enemy>();
-				if (enemy != null && enemy.Damage(damage * Time.deltaTime))
+				if (enemy != null && enemy.Damage(d))
 					SetKilled(enemy);
 				float dist = hits[i].distance + 0.4f;
 				if (dist > prevRange)
@@ -77,5 +78,15 @@ public class LaserTower : Tower
 			elapsed += Time.deltaTime * powerSource.efficiency;
 		} while (elapsed < laserTime);
 		lr.enabled = false;
+	}
+
+	public override string stats
+	{
+		get
+		{
+			return string.Format(
+				"Laser Tower\nUpgrades: {0}\nDamage: {1:n1}\nDPS: {5:n1}\nRange: {2:n1}\nInterval {3:n1}\nPower Drain: {4}",
+				numUpgrades, (int)damage, range, cooldown, (int)powerDrain, damage / cooldown * powerSource.efficiency);
+		}
 	}
 }

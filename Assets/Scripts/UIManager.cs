@@ -7,6 +7,10 @@ public class UIManager : MonoBehaviour {
 
 	static UIManager instance;
 
+	public GameObject infoPanel;
+	public Text infoText;
+	public LineRenderer infoLine;
+	[Space]
 	public RectTransform buildPanel;
 	public GameObject[] towerPrefabs;
 	public GameObject[] trapPrefabs;
@@ -108,5 +112,22 @@ public class UIManager : MonoBehaviour {
 			buildPanel.GetChild(i).gameObject.SetActive(false);
 		}
 		buildPanel.gameObject.SetActive(true);
+	}
+
+	static public void ShowStats(string stats, Vector3 position, float range)
+	{
+		int num = instance.infoLine.positionCount;
+		float div = 1f / (float)num;
+		for (int i = 0; i < num; i++)
+		{
+			instance.infoLine.SetPosition(i, position + Quaternion.Euler(0, 360 * i * div, 0) * new Vector3(0, 0, range));
+		}
+		instance.infoText.text = stats;
+		instance.infoPanel.SetActive(true);
+	}
+
+	static public void HideStats()
+	{
+		instance.infoPanel.SetActive(false);
 	}
 }

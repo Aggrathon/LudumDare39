@@ -59,4 +59,15 @@ public class BasicTower : Tower
 		projectiles[index].velocity = transform.forward * projectileSpeed;
 		index = (index + 1) % projectiles.Length;
 	}
+
+	public override string stats
+	{
+		get
+		{
+			float damage = projectiles[0].GetComponent<Projectile>().damage;
+			return string.Format(
+				"Magnetic Tower\nUpgrades: {0}\nDamage: {1:n1}\nDPS: {5:n1}\nRange: {2:n1}\nCooldown {3:n1}\nPower Drain: {4}",
+				numUpgrades, damage, range, cooldown, (int)powerDrain, damage/cooldown*powerSource.efficiency);
+		}
+	}
 }

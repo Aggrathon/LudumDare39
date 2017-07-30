@@ -16,9 +16,11 @@ public abstract class Tower : MonoBehaviour {
 	Enemy target;
 	Button towerImg;
 	Text towerLevel;
-	int numUpgrades = 0;
+	protected int numUpgrades = 0;
 	protected float firingTimer;
 	protected bool autoRotate = true;
+
+	public abstract string stats { get; }
 
 	virtual protected void Start()
 	{
@@ -48,7 +50,7 @@ public abstract class Tower : MonoBehaviour {
 		}
 		else
 		{
-			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, 30 * Time.deltaTime);
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.identity, 20 * Time.deltaTime);
 		}
 	}
 
@@ -100,6 +102,17 @@ public abstract class Tower : MonoBehaviour {
 	public void ShowUpgrades()
 	{
 		UIManager.Upgrade(this);
+	}
+
+	public void ShowStats()
+	{
+		if (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt))
+			UIManager.ShowStats(stats, transform.position, range);
+	}
+
+	public void HideStats()
+	{
+		UIManager.HideStats();
 	}
 
 	public bool UpgradeTower(Upgrade upgrade)
