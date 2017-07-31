@@ -12,9 +12,16 @@ public class Spawner : MonoBehaviour {
 	public float delayBetweenSpawns = 1f;
 	public float delayBetweenWaves = 10f;
 	public Text text;
+	public Enemy[] enemies;
 
 	void Start () {
 		StartCoroutine(Spawning());
+	}
+
+	public void SetEndlessMode()
+	{
+		StopAllCoroutines();
+		StartCoroutine(EndlessSpawning());
 	}
 
 
@@ -36,6 +43,39 @@ public class Spawner : MonoBehaviour {
 		}
 		while (Enemy.activeEnemies.Count > 0) yield return null;
 		GameManager.WinGame();
+	}
+
+	IEnumerator EndlessSpawning()
+	{
+		int counter = 1;
+		int bonus = 0;
+		yield return WaitForWave();
+		while (true)
+		{
+			if (GameManager.CheckMoney(500))
+				bonus++;
+			text.text = Utils.GetRomanNumeral(counter);
+			if (onWave != null) onWave(counter);
+			int value = (int)((counter+bonus) * 0.25f + Mathf.Sqrt(counter+bonus));
+
+			for (int i = 0; i < 3; i++)
+			{
+				Enemy e = enemies[UnityEngine.Random.Range(0, enemies.Length)];
+				int num = value / e.endlessWeight;
+				if (num > 0)
+				{
+					SpawnEnemies(e.gameObject, num);
+					yield return new WaitForSeconds(delayBetweenSpawns);
+				}
+				else
+					i--;
+			}
+			counter++;
+			if (counter < 5)
+				yield return new WaitForSeconds(delayBetweenWaves*0.5f);
+			else
+				yield return new WaitForSeconds(delayBetweenWaves);
+		}
 	}
 
 	IEnumerator WaitForWave()

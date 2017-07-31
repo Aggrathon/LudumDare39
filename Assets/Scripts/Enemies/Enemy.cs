@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour {
 	public float maxHealth = 100;
 	public int killReward = 10;
 	public float penalty = 1;
+	public int endlessWeight = 1;
 
 	NavMeshAgent nav;
 	LinkedListNode<Enemy> node;

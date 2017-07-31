@@ -78,6 +78,10 @@ MonoBehaviour:
   delayBetweenSpawns: 1.2
   delayBetweenWaves: 20
   text: {fileID: 114852594020952654}
+  enemies:
+  - {fileID: 114754367262140862, guid: fa8a01cb2bb9de64184aa2e3120775be, type: 2}
+  - {fileID: 114605594664575588, guid: e04513819933c8849af69fa951baf2d8, type: 2}
+  - {fileID: 114383471542822556, guid: 9ef0ec89983dd3747b8eeea1bedcbbb6, type: 2}
 --- !u!114 &114523742032702906
 MonoBehaviour:
   m_ObjectHideFlags: 1

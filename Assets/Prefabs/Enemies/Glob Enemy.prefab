@@ -102,6 +102,7 @@ MonoBehaviour:
   maxHealth: 500
   killReward: 15
   penalty: 10
+  endlessWeight: 5
 --- !u!135 &135953787800377934
 SphereCollider:
   m_ObjectHideFlags: 1
