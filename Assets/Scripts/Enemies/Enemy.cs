@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour {
 		return false;
 	}
 
-	void Die()
+	virtual protected void Die()
 	{
 		GameManager.AddMoney(killReward);
 		Destroy(gameObject);
