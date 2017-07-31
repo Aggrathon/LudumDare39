@@ -28,7 +28,7 @@ public class LaserTower : Tower
 				IncreasePowerDrain(powerDrain*0.1f);
 			}),
 			new UpgradeData("Cooldown reduction", ()=>{
-				cooldown = (cooldown-laserTime)*0.5f -laserTime;
+				cooldown = (cooldown-laserTime)*0.5f + laserTime;
 				IncreasePowerDrain(powerDrain*0.1f);
 			}),
 			new UpgradeData("Range", ()=>{
