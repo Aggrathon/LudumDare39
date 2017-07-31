@@ -124,7 +124,7 @@ public abstract class Tower : MonoBehaviour, IUpgradable
 			upgrades.Remove(upgrade);
 		else
 		{
-			upgrade.costMultiplier *= 1.2f;
+			upgrade.costMultiplier = upgrade.costMultiplier*1.2f;
 			cost += (int)((float)cost * 0.1f);
 		}
 		upgrade.func();

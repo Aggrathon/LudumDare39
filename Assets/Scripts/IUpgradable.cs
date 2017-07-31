@@ -8,7 +8,7 @@ public interface IUpgradable
 	List<UpgradeData> upgrades { get; }
 }
 
-public struct UpgradeData
+public class UpgradeData
 {
 	public string name;
 	public float costMultiplier;

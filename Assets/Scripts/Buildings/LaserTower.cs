@@ -61,7 +61,8 @@ public class LaserTower : Tower
 		float elapsed = 0;
 		float prevRange = range*0.8f;
 		audioSource.pitch = UnityEngine.Random.Range(0.98f, 1.02f);
-		audioSource.PlayOneShot(sounds[UnityEngine.Random.Range(0, sounds.Length)]);
+		audioSource.clip = sounds[UnityEngine.Random.Range(0, sounds.Length)];
+		audioSource.Play();
 		do
 		{
 			float volume = ((elapsed / laserTime) * 2f - 1f);
@@ -85,6 +86,7 @@ public class LaserTower : Tower
 			elapsed += Time.deltaTime * powerSource.efficiency;
 		} while (elapsed < laserTime);
 		lr.enabled = false;
+		audioSource.Stop();
 	}
 
 	public override string stats
